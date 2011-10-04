@@ -1,0 +1,45 @@
+* Wed Jun 08 2011 Carsten Munk <carsten@maemo.org> - 1.1.0~rc1
+- Drop libcontentaction dependancy, this causes libmeegotouch to be
+  pulled into MeeGo Core (at least one of them). If lca-tool usage
+  is wished, libcontentaction can be pulled into an image, script
+  will work (due to use of 'which')
+
+* Wed Feb 16 2011 Fathi Boudra <fathi.boudra@nokia.com> - 1.1.0~rc1
+- Add lca-tool support in xdg-open
+- Add libcontentaction requires to pull lca-tool
+- Remove perl-File-MimeInfo requires to avoid to pull perl (BMC#13448)
+  mimeopen can still be used if the package is installed manually
+
+* Sat Jan 01 2011 Fathi Boudra <fathi.boudra@nokia.com> - 1.1.0~rc1
+- New upstream release (BMC#11885)
+- Replace xdg-utils-chromium.patch by meego_browsers.patch: add fennec to the
+  browser list and change the browser preference order.
+  The default order is chromium-browser, google-chrome, fennec, etc...
+- Update description and add xdg-settings
+- Set BuildArch to noarch
+
+* Mon Apr 19 2010 Chris Ferron <chris.e.ferron@intel.com> - 1.0.2_cvs20100118
+- Use google-chrome as first choice for xdg-open
+
+* Thu Mar 18 2010 Anas Nashif <anas.nashif@intel.com> - 1.0.2_cvs20100118
+- Use latest upstream code
+- Use chromium as first choice for xdg-open (MB#4225)
+
+* Mon Feb 22 2010 Anas Nashif <anas.nashif@intel.com> - 1.0.2
+- Updated with latest spectacle
+
+* Sat Feb 13 2010 Anas Nashif <anas.nashif@intel.com> - 1.0.2
+- Fixed spec file, Makefile and spectacle build
+
+* Mon Feb 1 2010 Zhang, Qiang Z<qiang.z.zhang@intel.com> - 1.0.2
+- Switch to spectacle building
+
+* Wed Dec 23 2009 Zhang Qiang <qiang.z.zhang@intel.com> - 1.0.2
+- Remove unset LD_AS_NEEDED
+
+* Thu Nov 19 2009 Anas Nashif <anas.nashif@intel.com> - 1.0.2
+- Require perl-File-MimeInfo to provide mimeopen (MB#4225)
+
+* Tue Dec 16 2008 Arjan van de Ven <arjan@linux.intel.com> 1.0.2
+- Create a standardized specfile
+
