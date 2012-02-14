@@ -9,7 +9,6 @@ URL: http://portland.freedesktop.org/
 Sources:
     - "http://portland.freedesktop.org/download/%{name}-1.1.0-rc1.tar.gz"
 Patches:
-    - meego_browsers.patch
     - lca_support.patch
 Description: |
     %{name} contains utilities for integrating applications with the

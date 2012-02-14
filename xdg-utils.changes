@@ -1,3 +1,6 @@
+* Tue Feb 14 2012 Marko Saukko <marko.saukko@gmail.com> - 1.1.0~rc1
+- Drop meego_browsers.patch and unused Makefile.
+
 * Wed Jun 08 2011 Carsten Munk <carsten@maemo.org> - 1.1.0~rc1
 - Drop libcontentaction dependancy, this causes libmeegotouch to be
   pulled into MeeGo Core (at least one of them). If lca-tool usage
