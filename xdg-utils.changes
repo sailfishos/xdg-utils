@@ -1,3 +1,6 @@
+* Tue Apr 16 2013 Vesa-Matti Hartikainen <vesa-matti.hartikainen@jollamobile.com>
+- Fixes MER#719 : xdg-open uses lca-tool for files but not for URLs
+
 * Tue Feb 14 2012 Marko Saukko <marko.saukko@gmail.com> - 1.1.0~rc1
 - Drop meego_browsers.patch and unused Makefile.
 

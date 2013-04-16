@@ -1,0 +1,30 @@
+From 131cfba7421ca12f2d98063332a29507dd47409d Mon Sep 17 00:00:00 2001
+From: Vesa-Matti Hartikainen <vesa-matti.hartikainen@jollamobile.com>
+Date: Tue, 16 Apr 2013 17:49:44 +0300
+Subject: [PATCH] open protocols using lca-tool when possible
+
+---
+ scripts/xdg-open |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/scripts/xdg-open b/scripts/xdg-open
+index b8db0aa..157cb10 100755
+--- a/scripts/xdg-open
++++ b/scripts/xdg-open
+@@ -441,6 +441,13 @@ open_generic()
+             fi
+         fi
+     fi
++    
++    if which lca-tool 2>/dev/null 1>&2; then
++        lca-tool --scheme --triggerdefault "$1"
++        if [ $? -eq 0 ]; then
++            exit_success
++        fi    
++    fi
+ 
+     IFS=":"
+     for browser in $BROWSER; do
+-- 
+1.7.10.4
+

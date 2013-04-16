@@ -10,6 +10,7 @@ Sources:
     - "http://portland.freedesktop.org/download/%{name}-1.1.0-rc1.tar.gz"
 Patches:
     - lca_support.patch
+    - lca_protocol_handling.patch
 Description: |
     %{name} contains utilities for integrating applications with the
     desktop environment, regardless of which desktop environment is used.
