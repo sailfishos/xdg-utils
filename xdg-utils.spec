@@ -9,19 +9,21 @@ Name:       xdg-utils
 # << macros
 
 Summary:    Desktop integration utilities from freedesktop.org
-Version:    1.1.0~rc1
+Version:    1.1.0~rc3+git20150119
 Release:    1
 Group:      System/Base
 License:    MIT
 BuildArch:  noarch
 URL:        http://portland.freedesktop.org/
-Source0:    http://portland.freedesktop.org/download/%{name}-1.1.0-rc1.tar.gz
+Source0:    http://portland.freedesktop.org/download/%{name}-1.1.0-rc3+git20150119.tar.gz
 Source100:  xdg-utils.yaml
 Patch0:     lca_support.patch
 Patch1:     lca_protocol_handling.patch
+Patch2:     do_not_generate_scripts.patch
 Requires:   coreutils
 Requires:   desktop-file-utils
 Requires:   which
+#BuildRequires: libxslt
 
 %description
 %{name} contains utilities for integrating applications with the
@@ -44,12 +46,14 @@ The following utilities are included:
 
 
 %prep
-%setup -q -n %{name}-1.1.0-rc1
+%setup -q -n %{name}
 
 # lca_support.patch
 %patch0 -p1
 # lca_protocol_handling.patch
 %patch1 -p1
+# do_not_generate_scripts.patch
+%patch2 -p1
 # >> setup
 # << setup
 
@@ -57,7 +61,7 @@ The following utilities are included:
 # >> build pre
 # << build pre
 
-%configure --disable-static
+%configure
 make %{?jobs:-j%jobs}
 
 # >> build post
