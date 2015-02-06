@@ -1,0 +1,13 @@
+Index: xdg-utils/scripts/Makefile.in
+===================================================================
+--- xdg-utils.orig/scripts/Makefile.in
++++ xdg-utils/scripts/Makefile.in
+@@ -30,7 +30,7 @@ MANPAGES=	$(SCRIPTS:%=man/%.1)
+ WEBPAGES=	$(SCRIPTS:%=html/%.html)
+ XMLFILES=	$(SCRIPTS:%=desc/%.xml)
+ 
+-all:		html man scripts
++all:
+ 
+ html:		html/index.html $(WEBPAGES)
+ 

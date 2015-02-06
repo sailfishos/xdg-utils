@@ -1,4 +1,8 @@
-* Tue Apr 16 2013 Vesa-Matti Hartikainen <vesa-matti.hartikainen@jollamobile.com>
+* Mon Feb 02 2015 Pasi Sjöholm <pasi.sjoholm@jollamobile.com> - 1.1.0~rc3+git20150119
+- Update to 1.1.0~rc3+git20150119
+- Fix CVE-2014-9622
+
+* Tue Apr 16 2013 Vesa-Matti Hartikainen <vesa-matti.hartikainen@jollamobile.com> - 1.1.0~rc1
 - Fixes MER#719 : xdg-open uses lca-tool for files but not for URLs
 
 * Tue Feb 14 2012 Marko Saukko <marko.saukko@gmail.com> - 1.1.0~rc1
