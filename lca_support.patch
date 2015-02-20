@@ -1,8 +1,10 @@
 Description: add lca-tool support
 Author: Fathi Boudra <fathi.boudra@nokia.com>
---- a/scripts/xdg-open
-+++ b/scripts/xdg-open
-@@ -434,6 +434,14 @@ open_generic()
+Index: xdg-utils/scripts/xdg-open
+===================================================================
+--- xdg-utils.orig/scripts/xdg-open
++++ xdg-utils/scripts/xdg-open
+@@ -700,6 +700,14 @@ open_generic()
              fi
          fi
  
