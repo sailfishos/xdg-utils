@@ -7,24 +7,21 @@ Subject: [PATCH] open protocols using lca-tool when possible
  scripts/xdg-open |    7 +++++++
  1 file changed, 7 insertions(+)
 
-diff --git a/scripts/xdg-open b/scripts/xdg-open
-index b8db0aa..157cb10 100755
---- a/scripts/xdg-open
-+++ b/scripts/xdg-open
-@@ -441,6 +441,13 @@ open_generic()
-             fi
+Index: xdg-utils/scripts/xdg-open
+===================================================================
+--- xdg-utils.orig/scripts/xdg-open
++++ xdg-utils/scripts/xdg-open
+@@ -716,6 +716,13 @@ open_generic()
          fi
      fi
-+    
+ 
 +    if which lca-tool 2>/dev/null 1>&2; then
 +        lca-tool --scheme --triggerdefault "$1"
 +        if [ $? -eq 0 ]; then
 +            exit_success
-+        fi    
++        fi
 +    fi
++
+     open_generic_xdg_x_scheme_handler "$1"
  
      IFS=":"
-     for browser in $BROWSER; do
--- 
-1.7.10.4
-
