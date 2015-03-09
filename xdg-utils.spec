@@ -9,13 +9,13 @@ Name:       xdg-utils
 # << macros
 
 Summary:    Desktop integration utilities from freedesktop.org
-Version:    1.1.0~rc3+git20150119
+Version:    1.1.0~rc3+git20150302
 Release:    1
 Group:      System/Base
 License:    MIT
 BuildArch:  noarch
-URL:        http://portland.freedesktop.org/
-Source0:    http://portland.freedesktop.org/download/%{name}-1.1.0-rc3+git20150119.tar.gz
+URL:        http://cgit.freedesktop.org/xdg/xdg-utils/
+Source0:    http://cgit.freedesktop.org/xdg/xdg-utils/%{name}-1.1.0-rc3+git20150302.tar.gz
 Source100:  xdg-utils.yaml
 Patch0:     lca_support.patch
 Patch1:     lca_protocol_handling.patch
