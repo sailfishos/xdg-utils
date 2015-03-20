@@ -1,3 +1,7 @@
+* Mon Mar 09 2015 Pasi Sjöholm <pasi.sjoholm@jollamobile.com> - 1.1.0~rc3+git20150302
+- Update to 1.1.0~rc3+git20150302
+- Fix CVE-2015-1877
+
 * Fri Feb 20 2015 Pasi Sjöholm <pasi.sjoholm@jollamobile.com> - 1.1.0~rc3+git20150119
 - Fix lca patches because fuzz=2 was patching wrong section(s)
 
