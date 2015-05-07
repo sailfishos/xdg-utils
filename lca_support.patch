@@ -4,18 +4,17 @@ Index: xdg-utils/scripts/xdg-open
 ===================================================================
 --- xdg-utils.orig/scripts/xdg-open
 +++ xdg-utils/scripts/xdg-open
-@@ -700,6 +700,14 @@ open_generic()
-             fi
-         fi
+@@ -706,6 +706,13 @@
+         file_check=${file_check%%\?*}
+         check_input_file "$file_check"
  
-+        if [ -f /etc/meego-release ] &&
-+            which lca-tool 2>/dev/null 1>&2; then
++        if which lca-tool 2>/dev/null 1>&2; then
 +            lca-tool --file --triggerdefault "$file"
 +            if [ $? -eq 0 ]; then
 +                exit_success
 +            fi
 +        fi
 +
-         if mimeopen -v 2>/dev/null 1>&2; then
-             mimeopen -L -n "$file"
-             if [ $? -eq 0 ]; then
+         open_generic_xdg_file_mime "$file"
+ 
+         if which run-mailcap 2>/dev/null 1>&2; then
