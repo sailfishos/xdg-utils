@@ -10,7 +10,7 @@ Sources:
     - "http://cgit.freedesktop.org/xdg/xdg-utils/%{name}-1.1.0-rc3+git20150302.tar.gz"
 Patches:
     - lca_support.patch
-    - lca_protocol_handling.patch
+    - wayland_display_from_xdg.patch
     - do_not_generate_scripts.patch
 Description: |
     %{name} contains utilities for integrating applications with the

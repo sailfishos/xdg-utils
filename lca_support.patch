@@ -1,12 +1,9 @@
-Description: add lca-tool support
-Author: Fathi Boudra <fathi.boudra@nokia.com>
-Index: xdg-utils/scripts/xdg-open
-===================================================================
---- xdg-utils.orig/scripts/xdg-open
-+++ xdg-utils/scripts/xdg-open
-@@ -706,6 +706,13 @@
-         file_check=${file_check%%\?*}
-         check_input_file "$file_check"
+diff -Naur xdg-utils-1.1.1/scripts/xdg-open.in xdg-utils-1.1.1-lca_support/scripts/xdg-open.in
+--- xdg-utils-1.1.1/scripts/xdg-open.in	2015-10-05 21:59:19.000000000 +0300
++++ xdg-utils-1.1.1-lca_support/scripts/xdg-open.in	2016-04-20 12:27:30.394886947 +0300
+@@ -348,6 +348,13 @@
+ 
+         check_input_file "$file"
  
 +        if which lca-tool 2>/dev/null 1>&2; then
 +            lca-tool --file --triggerdefault "$file"
@@ -15,6 +12,20 @@ Index: xdg-utils/scripts/xdg-open
 +            fi
 +        fi
 +
-         open_generic_xdg_file_mime "$file"
+         if [ -n "$DISPLAY" ]; then
+             filetype=`xdg-mime query filetype "$file" | sed "s/;.*//"`
+             open_generic_xdg_mime "$file" "$filetype"
+@@ -368,6 +375,13 @@
+         fi
+     fi
  
-         if which run-mailcap 2>/dev/null 1>&2; then
++    if which lca-tool 2>/dev/null 1>&2; then
++        lca-tool --scheme --triggerdefault "$1"
++        if [ $? -eq 0 ]; then
++            exit_success
++        fi
++    fi
++
+     if [ -n "$BROWSER" ]; then
+         open_envvar "$1"
+     fi
