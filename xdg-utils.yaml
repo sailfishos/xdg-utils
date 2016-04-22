@@ -1,17 +1,16 @@
 Name: xdg-utils
 Summary: Desktop integration utilities from freedesktop.org
-Version: 1.1.0~rc3+git20150302
+Version: 1.1.1
 Release: 1
 Group: System/Base
 License: MIT
 BuildArch: noarch
 URL: http://portland.freedesktop.org/
 Sources:
-    - "http://cgit.freedesktop.org/xdg/xdg-utils/%{name}-1.1.0-rc3+git20150302.tar.gz"
+    - "https://portland.freedesktop.org/download/%{name}-1.1.1.tar.gz"
 Patches:
     - lca_support.patch
-    - lca_protocol_handling.patch
-    - do_not_generate_scripts.patch
+    - wayland_display_from_xdg.patch
 Description: |
     %{name} contains utilities for integrating applications with the
     desktop environment, regardless of which desktop environment is used.
