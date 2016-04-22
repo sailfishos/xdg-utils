@@ -1,3 +1,6 @@
+* Fri Apr 22 2016 Pekka Vuorela <pekka.vuorela@jolla.com> - 1.1.1
+- Update to 1.1.1
+
 * Wed May 06 2015 Andres Gomez <andres.gomez@jolla.com> - 1.1.0~rc3+git20150302
 - Fixes MER#971 : lca-tool has to be tried for local files before using the generic open method
 
