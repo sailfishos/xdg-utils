@@ -1,0 +1,1405 @@
+diff -Naur xdg-utils-1.1.1/scripts/xdg-copy.txt xdg-utils-1.1.1-txt-files/scripts/xdg-copy.txt
+--- xdg-utils-1.1.1/scripts/xdg-copy.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-copy.txt	2016-05-19 14:34:20.860688780 +0300
+@@ -0,0 +1,49 @@
++Name
++
++xdg-copy — command line tool for copying files between desktop URIs
++
++Synopsis
++
++xdg-copy source destination
++
++xdg-copy { --help | --manual | --version }
++
++Description
++
++xdg-copy copies source to destination and provides visual feedback to the user
++during the operation. Both source and destination can either be a file or URL.
++Supported URL types are file, ftp, http and https. Additional URL types may be
++supported depending on the desktop environment.
++
++xdg-copy is for use inside a desktop session only. It is not recommended to use
++xdg-copy as root.
++
++Options
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++Examples
++
++xdg-copy "http://portland.freedesktop.org/png/freedesktop-logo.png" .
++
++xdg-copy "/tmp/foobar.png" "/home/user/foobar-copy.png"
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-icon.txt xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-icon.txt
+--- xdg-utils-1.1.1/scripts/xdg-desktop-icon.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-icon.txt	2016-05-19 14:34:20.860688780 +0300
+@@ -0,0 +1,150 @@
++Name
++
++xdg-desktop-icon — command line tool for (un)installing icons to the desktop
++
++Synopsis
++
++xdg-desktop-icon install [--novendor] FILE
++
++xdg-desktop-icon uninstall FILE
++
++xdg-desktop-icon { --help | --manual | --version }
++
++Description
++
++The xdg-desktop-icon program can be used to install an application launcher or
++other file on the desktop of the current user.
++
++An application launcher is represented by a *.desktop file. Desktop files are
++defined by the freedesktop.org Desktop Entry Specification. The most important
++aspects of *.desktop files are summarized below.
++
++Commands
++
++install
++    Installs FILE to the desktop of the current user. FILE can be a *.desktop
++    file or any other type of file.
++uninstall
++    Removes FILE from the desktop of the current user.
++
++Options
++
++--novendor
++
++    Normally, xdg-desktop-icon checks to ensure that a *.desktop file to be
++    installed has a vendor prefix. This option can be used to disable that
++    check.
++
++    A vendor prefix consists of alpha characters ([a-zA-Z]) and is terminated
++    with a dash ("-"). Companies and organizations are encouraged to use a word
++    or phrase, preferably the organizations name, for which they hold a
++    trademark as their vendor prefix. The purpose of the vendor prefix is to
++    prevent name conflicts.
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Desktop Files
++
++An application launcher can be added to the desktop by installing a *.desktop
++file. A *.desktop file consists of a [Desktop Entry] header followed by several
++Key=Value lines.
++
++A *.desktop file can provide a name and description for an application in
++several different languages. This is done by adding a language code as used by
++LC_MESSAGES in square brackets behind the Key. This way one can specify
++different values for the same Key depending on the currently selected language.
++
++The following keys are often used:
++
++Type=Application
++    This is a mandatory field that indicates that the *.desktop file describes
++    an application launcher.
++Name=Application Name
++    The name of the application. For example Mozilla
++GenericName=Generic Name
++    A generic description of the application. For example Web Browser
++Comment=Comment
++    Optional field to specify a tooltip for the application. For example Visit
++    websites on the Internet
++Icon=Icon File
++    The icon to use for the application. This can either be an absolute path to
++    an image file or an icon-name. If an icon-name is provided an image lookup
++    by name is done in the user's current icon theme. The xdg-icon-resource
++    command can be used to install image files into icon themes. The advantage
++    of using an icon-name instead of an absolute path is that with an icon-name
++    the application icon can be provided in several different sizes as well as
++    in several differently themed styles.
++Exec=Command Line
++    The command line to start the application. If the application can open
++    files the %f placeholder should be specified. When a file is dropped on the
++    application launcher the %f is replaced with the file path of the dropped
++    file. If multiple files can be specified on the command line the %F
++    placeholder should be used instead of %f. If the application is able to
++    open URLs in addition to local files then %u or %U can be used instead of
++    %f or %F.
++
++For a complete overview of the *.desktop file format please visit http://
++www.freedesktop.org/wiki/Specifications/desktop-entry-spec
++
++Environment Variables
++
++xdg-desktop-icon honours the following environment variables:
++
++XDG_UTILS_DEBUG_LEVEL
++    Setting this environment variable to a non-zero numerical value makes
++    xdg-desktop-icon do more verbose reporting on stderr. Setting a higher
++    value increases the verbosity.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++5
++    No permission to read one of the files passed on the command line.
++
++See Also
++
++xdg-icon-resource(1)
++
++Examples
++
++The company ShinyThings Inc. has developed an application named "WebMirror" and
++would like to add a launcher for for on the desktop. The company will use
++"shinythings" as its vendor id. In order to add the application to the desktop
++there needs to be a .desktop file for the application:
++
++shinythings-webmirror.desktop:
++
++  [Desktop Entry]
++  Encoding=UTF-8
++  Type=Application
++
++  Exec=webmirror
++  Icon=shinythings-webmirror
++
++  Name=WebMirror
++  Name[nl]=WebSpiegel
++
++Now the xdg-desktop-icon tool can be used to add the webmirror.desktop file to
++the desktop:
++
++xdg-desktop-icon install ./shinythings-webmirror.desktop
++
++To add a README file to the desktop as well, the following command can be used:
++
++xdg-desktop-icon install ./shinythings-README
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-menu.txt xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-menu.txt
+--- xdg-utils-1.1.1/scripts/xdg-desktop-menu.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-menu.txt	2016-05-19 14:34:20.860688780 +0300
+@@ -0,0 +1,341 @@
++Name
++
++xdg-desktop-menu — command line tool for (un)installing desktop menu items
++
++Synopsis
++
++xdg-desktop-menu install [--noupdate] [--novendor] [--mode mode] directory-file
++(s) desktop-file(s)
++
++xdg-desktop-menu uninstall [--noupdate] [--mode mode] directory-file(s)
++desktop-file(s)
++
++xdg-desktop-menu forceupdate [--mode mode]
++
++xdg-desktop-menu { --help | --manual | --version }
++
++Description
++
++The xdg-desktop-menu program can be used to install new menu entries to the
++desktop's application menu.
++
++The application menu works according to the XDG Desktop Menu Specification at
++http://www.freedesktop.org/wiki/Specifications/menu-spec
++
++Commands
++
++install
++
++    Install one or more applications in a submenu of the desktop menu system.
++
++    desktop-file: A desktop file represents a single menu entry in the menu.
++    Desktop files are defined by the freedesktop.org Desktop Entry
++    Specification. The most important aspects of *.desktop files are summarized
++    below.
++
++    Menu entries can be added to the menu system in two different ways. They
++    can either be added to a predefined submenu in the menu system based on one
++    or more category keywords, or they can be added to a new submenu.
++
++    To add a menu entry to a predefined submenu the desktop file that
++    represents the menu entry must have a Categories= entry that lists one or
++    more keywords. The menu item will be included in an appropriate submenu
++    based on the included keywords.
++
++    To add menu items to a new submenu the desktop-files must be preceded by a
++    directory-file that describes the submenu. If multiple desktop-files are
++    specified, all entries will be added to the same menu. If entries are
++    installed to a menu that has been created with a previous call to 
++    xdg-desktop-menu the entries will be installed in addition to any already
++    existing entries.
++
++    directory-file: The *.directory file indicated by directory-file represents
++    a submenu. The directory file provides the name and icon for a submenu. The
++    name of the directory file is used to identify the submenu.
++
++    If multiple directory files are provided each file will represent a submenu
++    within the menu that precedes it, creating a nested menu hierarchy
++    (sub-sub-menus). The menu entries themselves will be added to the last
++    submenu.
++
++    Directory files follow the syntax defined by the freedesktop.org Desktop
++    Entry Specification.
++
++uninstall
++
++    Remove applications or submenus from the desktop menu system previously
++    installed with xdg-desktop-menu install.
++
++    A submenu and the associated directory file is only removed when the
++    submenu no longer contains any menu entries.
++
++forceupdate
++
++    Force an update of the menu system.
++
++    This command is only useful if the last call to xdg-desktop-menu included
++    the --noupdate option.
++
++Options
++
++--noupdate
++    Postpone updating the menu system. If multiple updates to the menu system
++    are made in sequence this flag can be used to indicate that additional
++    changes will follow and that it is not necessary to update the menu system
++    right away.
++--novendor
++
++    Normally, xdg-desktop-menu checks to ensure that any *.directory and
++    *.desktop files to be installed has a vendor prefix. This option can be
++    used to disable that check.
++
++    A vendor prefix consists of alpha characters ([a-zA-Z]) and is terminated
++    with a dash ("-"). Companies and organizations are encouraged to use a word
++    or phrase, preferably the organizations name, for which they hold a
++    trademark as their vendor prefix. The purpose of the vendor prefix is to
++    prevent name conflicts.
++
++--mode mode
++
++    mode can be user or system. In user mode the file is (un)installed for the
++    current user only. In system mode the file is (un)installed for all users
++    on the system. Usually only root is allowed to install in system mode.
++
++    The default is to use system mode when called by root and to use user mode
++    when called by a non-root user.
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Desktop Files
++
++An application item in the application menu is represented by a *.desktop file.
++A *.desktop file consists of a [Desktop Entry] header followed by several Key=
++Value lines.
++
++A *.desktop file can provide a name and description for an application in
++several different languages. This is done by adding a language code as used by
++LC_MESSAGES in square brackets behind the Key. This way one can specify
++different values for the same Key depending on the currently selected language.
++
++The following keys are often used:
++
++Type=Application
++    This is a mandatory field that indicates that the *.desktop file describes
++    an application launcher.
++Name=Application Name
++    The name of the application. For example Mozilla
++GenericName=Generic Name
++    A generic description of the application. For example Web Browser
++Comment=Comment
++    Optional field to specify a tooltip for the application. For example Visit
++    websites on the Internet
++Icon=Icon File
++    The icon to use for the application. This can either be an absolute path to
++    an image file or an icon-name. If an icon-name is provided an image lookup
++    by name is done in the user's current icon theme. The xdg-icon-resource
++    command can be used to install image files into icon themes. The advantage
++    of using an icon-name instead of an absolute path is that with an icon-name
++    the application icon can be provided in several different sizes as well as
++    in several differently themed styles.
++Exec=Command Line
++    The command line to start the application. If the application can open
++    files the %f placeholder should be specified. When a file is dropped on the
++    application launcher the %f is replaced with the file path of the dropped
++    file. If multiple files can be specified on the command line the %F
++    placeholder should be used instead of %f. If the application is able to
++    open URLs in addition to local files then %u or %U can be used instead of
++    %f or %F.
++Categories=Categories
++
++    A list of categories separated by semi-colons. A category is a keyword that
++    describes and classifies the application. By default applications are
++    organized in the application menu based on category. When menu entries are
++    explicitly assigned to a new submenu it is not necessary to list any
++    categories.
++
++    When using categories it is recommended to include one of the following
++    categories: AudioVideo, Development, Education, Game, Graphics, Network,
++    Office, Settings, System, Utility.
++
++    See Appendix A of the XDG Desktop Menu Specification for information about
++    additional categories: http://standards.freedesktop.org/menu-spec/
++    menu-spec-1.0.html#category-registry
++
++MimeType=Mimetypes
++    A list of mimetypes separated by semi-colons. This field is used to
++    indicate which file types the application is able to open.
++
++For a complete overview of the *.desktop file format please visit http://
++www.freedesktop.org/wiki/Specifications/desktop-entry-spec
++
++Directory Files
++
++The appearance of submenu in the application menu is provided by a *.directory
++file. In particular it provides the title of the submenu and a possible icon. A
++*.directory file consists of a [Desktop Entry] header followed by several Key=
++Value lines.
++
++A *.directory file can provide a title (name) for the submenu in several
++different languages. This is done by adding a language code as used by
++LC_MESSAGES in square brackets behind the Key. This way one can specify
++different values for the same Key depending on the currently selected language.
++
++The following keys are relevant for submenus:
++
++Type=Directory
++    This is a mandatory field that indicates that the *.directory file
++    describes a submenu.
++Name=Menu Name
++    The title of submenu. For example Mozilla
++Comment=Comment
++    Optional field to specify a tooltip for the submenu.
++Icon=Icon File
++    The icon to use for the submenu. This can either be an absolute path to an
++    image file or an icon-name. If an icon-name is provided an image lookup by
++    name is done in the user's current icon theme. The xdg-icon-resource
++    command can be used to install image files into icon themes. The advantage
++    of using an icon-name instead of an absolute path is that with an icon-name
++    the submenu icon can be provided in several different sizes as well as in
++    several differently themed styles.
++
++Environment Variables
++
++xdg-desktop-menu honours the following environment variables:
++
++XDG_UTILS_DEBUG_LEVEL
++    Setting this environment variable to a non-zero numerical value makes
++    xdg-desktop-menu do more verbose reporting on stderr. Setting a higher
++    value increases the verbosity.
++XDG_UTILS_INSTALL_MODE
++    This environment variable can be used by the user or administrator to
++    override the installation mode. Valid values are user and system.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++5
++    No permission to read one of the files passed on the command line.
++
++See Also
++
++xdg-desktop-icon(1), xdg-icon-resource(1), xdg-mime(1), Desktop entry
++specification, Desktop menu specification
++
++Examples
++
++The company ShinyThings Inc. has developed an application named "WebMirror" and
++would like to add it to the application menu. The company will use
++"shinythings" as its vendor id. In order to add the application to the menu
++there needs to be a .desktop file with a suitable Categories entry:
++
++shinythings-webmirror.desktop:
++
++  [Desktop Entry]
++  Encoding=UTF-8
++  Type=Application
++
++  Exec=webmirror
++  Icon=webmirror
++
++  Name=WebMirror
++  Name[nl]=WebSpiegel
++
++  Categories=Network;WebDevelopment;
++
++Now the xdg-desktop-menu tool can be used to add the
++shinythings-webmirror.desktop file to the desktop application menu:
++
++xdg-desktop-menu install ./shinythings-webmirror.desktop
++
++Note that for the purpose of this example the menu items are available in two
++languages, English and Dutch. The language code for Dutch is nl.
++
++In the next example the company ShinyThings Inc. will add its own submenu to
++the desktop application menu consisting of a "WebMirror" menu item and a
++"WebMirror Admin Tool" menu item.
++
++First the company needs to create two .desktop files that describe the two menu
++items. Since the items are to be added to a new submenu it is not necessary to
++include a Categories= line:
++
++shinythings-webmirror.desktop:
++
++  [Desktop Entry]
++  Encoding=UTF-8
++  Type=Application
++
++  Exec=webmirror
++  Icon=shinythings-webmirror
++
++  Name=WebMirror
++  Name[nl]=WebSpiegel
++
++
++shinythings-webmirror-admin.desktop:
++
++  [Desktop Entry]
++  Encoding=UTF-8
++  Type=Application
++
++  Exec=webmirror-admintool
++  Icon=shinythings-webmirror-admintool
++
++  Name=WebMirror Admin Tool
++  Name[nl]=WebSpiegel Administratie Tool
++
++In addition a .directory file needs to be created to provide a title and icon
++for the sub-menu itself:
++
++shinythings-webmirror.directory:
++
++  [Desktop Entry]
++  Encoding=UTF-8
++
++  Icon=shinythings-webmirror-menu
++
++  Name=WebMirror
++  Name[nl]=WebSpiegel
++
++These file can now be installed with:
++
++xdg-desktop-menu install ./shinythings-webmirror.directory \
++      ./shinythings-webmirror.desktop ./shinythings-webmirror-admin.desktop
++
++The menu entries could also be installed one by one:
++
++xdg-desktop-menu install --noupdate ./shinythings-webmirror.directory \
++      ./shinythings-webmirror.desktop
++xdg-desktop-menu install --noupdate ./shinythings-webmirror.directory \
++      ./shinythings-webmirror-admin.desktop
++xdg-desktop-menu forceupdate
++
++Although the result is the same it is slightly more efficient to install all
++files at the same time.
++
++The *.desktop and *.directory files reference icons with the names webmirror,
++webmirror-admin and webmirror-menu which should also be installed. In this
++example the icons are installed in two different sizes, once with a size of
++22x22 pixels and once with a size of 64x64 pixels:
++
++xdg-icon-resource install --size 22 ./wmicon-22.png shinythings-webmirror
++xdg-icon-resource install --size 22 ./wmicon-menu-22.png shinythings-webmirror-menu
++xdg-icon-resource install --size 22 ./wmicon-admin-22.png shinythings-webmirror-admin
++xdg-icon-resource install --size 64 ./wmicon-64.png shinythings-webmirror
++xdg-icon-resource install --size 64 ./wmicon-menu-64.png shinythings-webmirror-menu
++xdg-icon-resource install --size 64 ./wmicon-admin-64.png shinythings-webmirror-admin
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-email.txt xdg-utils-1.1.1-txt-files/scripts/xdg-email.txt
+--- xdg-utils-1.1.1/scripts/xdg-email.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-email.txt	2016-05-19 14:34:20.860688780 +0300
+@@ -0,0 +1,101 @@
++Name
++
++xdg-email — command line tool for sending mail using the user's preferred
++e-mail composer
++
++Synopsis
++
++xdg-email [--utf8] [--cc address] [--bcc address] [--subject text] [--body text
++] [--attach file] [ mailto-uri | address(es) ]
++
++xdg-email { --help | --manual | --version }
++
++Description
++
++xdg-email opens the user's preferred e-mail composer in order to send a mail to
++address(es) or mailto-uri. RFC2368 defines mailto: URIs. xdg-email limits
++support to, cc, subject and body fields in mailto-uri, all other fields are
++silently ignored. address(es) must follow the syntax of RFC822. Multiple
++addresses may be provided as separate arguments.
++
++All information provided on the command line is used to prefill corresponding
++fields in the user's e-mail composer. The user will have the opportunity to
++change any of this information before actually sending the e-mail.
++
++xdg-email is for use inside a desktop session only. It is not recommended to
++use xdg-email as root.
++
++Options
++
++--utf8
++    Indicates that all command line options that follow are in utf8. Without
++    this option, command line options are expected to be encoded according to
++    locale. If the locale already specifies utf8 this option has no effect.
++    This option does not affect mailto URIs that are passed on the command
++    line.
++--cc address
++    Specify a recipient to be copied on the e-mail.
++--bcc address
++    Specify a recipient to be blindly copied on the e-mail.
++--subject text
++    Specify a subject for the e-mail.
++--body text
++    Specify a body for the e-mail. Since the user will be able to make changes
++    before actually sending the e-mail, this can be used to provide the user
++    with a template for the e-mail. text may contain linebreaks.
++--attach file
++
++    Specify an attachment for the e-mail. file must point to an existing file.
++
++    Some e-mail applications require the file to remain present after xdg-email
++    returns.
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Environment Variables
++
++xdg-email honours the following environment variables:
++
++XDG_UTILS_DEBUG_LEVEL
++    Setting this environment variable to a non-zero numerical value makes
++    xdg-email do more verbose reporting on stderr. Setting a higher value
++    increases the verbosity.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++5
++    No permission to read one of the files passed on the command line.
++
++See Also
++
++xdg-open(1), xdg-mime(1), MIME applications associations specification, RFC
++6068 - The 'mailto' URI Scheme
++
++Examples
++
++xdg-email 'Jeremy White <jwhite@example.com>'
++
++xdg-email --attach /tmp/logo.png \
++          --subject 'Logo contest' \
++          --body 'Attached you find the logo for the contest.' \
++          'jwhite@example.com'
++
++xdg-email --subject 'Your password is about to expire' \
++          'jwhite@example.com' 'bastian@example.com' 'whipple@example.com'
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-file-dialog.txt xdg-utils-1.1.1-txt-files/scripts/xdg-file-dialog.txt
+--- xdg-utils-1.1.1/scripts/xdg-file-dialog.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-file-dialog.txt	2016-05-19 14:34:20.860688780 +0300
+@@ -0,0 +1,78 @@
++Name
++
++xdg-file-dialog — command line tool for providing file and directory selection
++dialogs
++
++Synopsis
++
++xdg-file-dialog openfilename [--title TITLE] [FILENAME]
++
++xdg-file-dialog openfilenamelist [--title TITLE] [FILENAME]
++
++xdg-file-dialog savefilename [--title TITLE] [FILENAME]
++
++xdg-file-dialog directory [--title TITLE] [DIRNAME]
++
++xdg-file-dialog { --help | --manual | --version }
++
++Description
++
++The xdg-file-dialog program can be used to let the native file selection dialog
++handle file and directory input.
++
++xdg-file-dialog is for use inside a desktop session only. It is not recommended
++to use xdg-file-dialog as root.
++
++Commands
++
++openfilename
++    Returns the filename with path for a file to read from. FILENAME can
++    optionally be used to specify path and filename of a preselection.
++openfilenamelist
++    Returns one or more filenames with path for files to read from, each on a
++    new line. FILENAME can optionally be used to specify path and filename of a
++    preselection.
++savefilename
++    Returns the filename with path for file to write to. FILENAME can
++    optionally be used to specify path and filename of a preselection.
++directory
++    Returns the path for an existing directory. DIRNAME can optionally be used
++    to specify a path of a preselection.
++
++Options
++
++--title TITLE
++    Sets the dialog's title (caption) to the specified text.
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++Examples
++
++xdg-file-dialog savefilename /tmp/foobar.png
++
++Asks for a save file name starting in directory /tmp and suggesting foobar.png
++as the filename
++
++xdg-file-dialog directory --title "Select a target folder" /tmp
++
++Asks for a directory name starting in directory /tmp using the text "Select a
++target folder" as the dialog's title/caption.
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-icon-resource.txt xdg-utils-1.1.1-txt-files/scripts/xdg-icon-resource.txt
+--- xdg-utils-1.1.1/scripts/xdg-icon-resource.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-icon-resource.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,141 @@
++Name
++
++xdg-icon-resource — command line tool for (un)installing icon resources
++
++Synopsis
++
++xdg-icon-resource install [--noupdate] [--novendor] [--theme theme] [--context
++context] [--mode mode] --size size icon-file [icon-name]
++
++xdg-icon-resource uninstall [--noupdate] [--theme theme] [--context context]
++[--mode mode] --size size icon-name
++
++xdg-icon-resource forceupdate [--theme theme] [--mode mode]
++
++xdg-icon-resource { --help | --manual | --version }
++
++Description
++
++The xdg-icon-resource program can be used to install icon resources into the
++desktop icon system in order to illustrate menu entries, to depict desktop
++icons or to graphically represent file types.
++
++The desktop icon system identifies icons by name. Depending on the required
++size, the choice of icon theme and the context in which the icon is used, the
++desktop icon system locates an appropriate icon resource to depict an icon.
++Icon resources can be XPM files or PNG files.
++
++The desktop icon system works according to the XDG Icon Theme Specification at
++http://www.freedesktop.org/wiki/Specifications/icon-theme-spec
++
++Commands
++
++install
++    Installs the icon file indicated by icon-file to the desktop icon system
++    under the name icon-name. Icon names do not have an extension. If icon-name
++    is not provided the name is derived from icon-file. The icon file must have
++    .png or .xpm as extension. If a corresponding .icon file exists in the same
++    location as icon-file it will be installed as well.
++uninstall
++    Removes the icon indicated by icon-name from the desktop icon system. Note
++    that icon names do not have an extension.
++forceupdate
++    Force an update of the desktop icon system. This is only useful if the last
++    call to xdg-icon-resource included the --noupdate option.
++
++Options
++
++--noupdate
++    Postpone updating the desktop icon system. If multiple icons are added in
++    sequence this flag can be used to indicate that additional changes will
++    follow and that it is not necessary to update the desktop icon system right
++    away.
++--novendor
++
++    Normally, xdg-icon-resource checks to ensure that an icon file to be
++    installed in the apps context has a proper vendor prefix. This option can
++    be used to disable that check.
++
++    A vendor prefix consists of alpha characters ([a-zA-Z]) and is terminated
++    with a dash ("-"). Companies and organizations are encouraged to use a word
++    or phrase, preferably the organizations name, for which they hold a
++    trademark as their vendor prefix. The purpose of the vendor prefix is to
++    prevent name conflicts.
++
++--theme theme
++    Installs or removes the icon file as part of theme. If no theme is
++    specified the icons will be installed as part of the default hicolor theme.
++    Applications may install icons under multiple themes but should at least
++    install icons for the default hicolor theme.
++--context context
++    Specifies the context for the icon. Icons to be used in the application
++    menu and as desktop icon should use apps as context which is the default
++    context. Icons to be used as file icons should use mimetypes as context.
++    Other common contexts are actions, devices, emblems, filesystems and stock.
++--size size
++    Specifies the size of the icon. All icons must be square. Common sizes for
++    icons in the apps context are: 16, 22, 32, 48, 64 and 128. Common sizes for
++    icons in the mimetypes context are: 16, 22, 32, 48, 64 and 128
++--mode mode
++
++    mode can be user or system. In user mode the file is (un)installed for the
++    current user only. In system mode the file is (un)installed for all users
++    on the system. Usually only root is allowed to install in system mode.
++
++    The default is to use system mode when called by root and to use user mode
++    when called by a non-root user.
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Environment Variables
++
++xdg-icon-resource honours the following environment variables:
++
++XDG_UTILS_DEBUG_LEVEL
++    Setting this environment variable to a non-zero numerical value makes
++    xdg-icon-resource do more verbose reporting on stderr. Setting a higher
++    value increases the verbosity.
++XDG_UTILS_INSTALL_MODE
++    This environment variable can be used by the user or administrator to
++    override the installation mode. Valid values are user and system.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++5
++    No permission to read one of the files passed on the command line.
++
++See Also
++
++xdg-desktop-icon(1), xdg-desktop-menu(1), xdg-mime(1), Icon theme specification
++
++Examples
++
++To install an icon resource to depict a launcher for the application myfoobar,
++the company ShinyThings Inc. can use:
++
++xdg-icon-resource install --size 64 shinythings-myfoobar.png
++
++To install an icon for a new application/x-foobar file type one can use:
++
++xdg-icon-resource install --context mimetypes --size 48 ./mime-foobar-48.png application-x-foobar
++xdg-icon-resource install --context mimetypes --size 64 ./mime-foobar-64.png application-x-foobar
++
++This will install two icons with the name application-x-foobar but with
++different sizes.
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-mime.txt xdg-utils-1.1.1-txt-files/scripts/xdg-mime.txt
+--- xdg-utils-1.1.1/scripts/xdg-mime.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-mime.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,170 @@
++Name
++
++xdg-mime — command line tool for querying information about file type handling
++and adding descriptions for new file types
++
++Synopsis
++
++xdg-mime query { filetype | default } ...
++
++xdg-mime default application mimetype(s)
++
++xdg-mime install [--mode mode] [--novendor] mimetypes-file
++
++xdg-mime uninstall [--mode mode] mimetypes-file
++
++xdg-mime { --help | --manual | --version }
++
++Description
++
++The xdg-mime program can be used to query information about file types and to
++add descriptions for new file types.
++
++Commands
++
++query
++
++    Returns information related to file types.
++
++    The query option is for use inside a desktop session only. It is not
++    recommended to use xdg-mime query as root.
++
++    The following queries are supported:
++
++    query filetype FILE: Returns the file type of FILE in the form of a MIME
++    type.
++
++    query default mimetype: Returns the default application that the desktop
++    environment uses for opening files of type mimetype. The default
++    application is identified by its *.desktop file.
++
++default
++
++    Ask the desktop environment to make application the default application for
++    opening files of type mimetype. An application can be made the default for
++    several file types by specifying multiple mimetypes.
++
++    application is the desktop file id of the application and has the form
++    vendor-name.desktop application must already be installed in the desktop
++    menu before it can be made the default handler. The application's desktop
++    file must list support for all the MIME types that it wishes to be the
++    default handler for.
++
++    Requests to make an application a default handler may be subject to system
++    policy or approval by the end-user. xdg-mime query can be used to verify
++    whether an application is the actual default handler for a specific file
++    type.
++
++    The default option is for use inside a desktop session only. It is not
++    recommended to use xdg-mime default as root.
++
++install
++    Adds the file type descriptions provided in mimetypes-file to the desktop
++    environment. mimetypes-file must be a XML file that follows the
++    freedesktop.org Shared MIME-info Database specification and that has a
++    mime-info element as its document root. For each new file type one or more
++    icons with name type-subtype must be installed with the xdg-icon-resource
++    command in the mimetypes context. For example the filetype application/
++    vnd.oasis.opendocument.text requires an icon named
++    application-vnd.oasis.opendocument.text to be installed (unless the file
++    type recommends another icon name).
++uninstall
++    Removes the file type descriptions provided in mimetypes-file and
++    previously added with xdg-mime install from the desktop environment.
++    mimetypes-file must be a XML file that follows the freedesktop.org Shared
++    MIME-info Database specification and that has a mime-info element as its
++    document root.
++
++Options
++
++--mode mode
++
++    mode can be user or system. In user mode the file is (un)installed for the
++    current user only. In system mode the file is (un)installed for all users
++    on the system. Usually only root is allowed to install in system mode.
++
++    The default is to use system mode when called by root and to use user mode
++    when called by a non-root user.
++
++--novendor
++
++    Normally, xdg-mime checks to ensure that the mimetypes-file to be installed
++    has a proper vendor prefix. This option can be used to disable that check.
++
++    A vendor prefix consists of alpha characters ([a-zA-Z]) and is terminated
++    with a dash ("-"). Companies and organizations are encouraged to use a word
++    or phrase, preferably the organizations name, for which they hold a
++    trademark as their vendor prefix. The purpose of the vendor prefix is to
++    prevent name conflicts.
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Environment Variables
++
++xdg-mime honours the following environment variables:
++
++XDG_UTILS_DEBUG_LEVEL
++    Setting this environment variable to a non-zero numerical value makes
++    xdg-mime do more verbose reporting on stderr. Setting a higher value
++    increases the verbosity.
++XDG_UTILS_INSTALL_MODE
++    This environment variable can be used by the user or administrator to
++    override the installation mode. Valid values are user and system.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++5
++    No permission to read one of the files passed on the command line.
++
++See Also
++
++xdg-icon-resource(1), xdg-desktop-menu(1), Shared MIME database specification,
++MIME applications associations specification
++
++Examples
++
++xdg-mime query filetype /tmp/foobar.png
++
++Prints the MIME type of the file /tmp/foobar.png, in this case image/png
++
++xdg-mime query default image/png
++
++Prints the .desktop filename of the application which is registered to open PNG
++files.
++
++xdg-mime install shinythings-shiny.xml
++
++Adds a file type description for "shiny"-files. "shinythings-" is used as the
++vendor prefix. The file type description could look as follows.
++
++shinythings-shiny.xml:
++
++<?xml version="1.0"?>
++<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
++  <mime-type type="text/x-shiny">
++    <comment>Shiny new file type</comment>
++    <glob pattern="*.shiny"/>
++    <glob pattern="*.shi"/>
++  </mime-type>
++</mime-info>
++
++An icon for this new file type must also be installed, for example with:
++
++xdg-icon-resource install --context mimetypes --size 64 shiny-file-icon.png text-x-shiny
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-open.txt xdg-utils-1.1.1-txt-files/scripts/xdg-open.txt
+--- xdg-utils-1.1.1/scripts/xdg-open.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-open.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,58 @@
++Name
++
++xdg-open — opens a file or URL in the user's preferred application
++
++Synopsis
++
++xdg-open { file | URL }
++
++xdg-open { --help | --manual | --version }
++
++Description
++
++xdg-open opens a file or URL in the user's preferred application. If a URL is
++provided the URL will be opened in the user's preferred web browser. If a file
++is provided the file will be opened in the preferred application for files of
++that type. xdg-open supports file, ftp, http and https URLs.
++
++xdg-open is for use inside a desktop session only. It is not recommended to use
++xdg-open as root.
++
++Options
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++See Also
++
++xdg-mime(1), xdg-settings(1), MIME applications associations specification
++
++Examples
++
++xdg-open 'http://www.freedesktop.org/'
++
++Opens the freedesktop.org website in the user's default browser.
++
++xdg-open /tmp/foobar.png
++
++Opens the PNG image file /tmp/foobar.png in the user's default image viewing
++application.
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-screensaver.txt xdg-utils-1.1.1-txt-files/scripts/xdg-screensaver.txt
+--- xdg-utils-1.1.1/scripts/xdg-screensaver.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-screensaver.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,81 @@
++Name
++
++xdg-screensaver — command line tool for controlling the screensaver
++
++Synopsis
++
++xdg-screensaver suspend WindowID
++
++xdg-screensaver resume WindowID
++
++xdg-screensaver { activate | lock | reset | status }
++
++xdg-screensaver { --help | --manual | --version }
++
++Description
++
++xdg-screensaver provides commands to control the screensaver.
++
++xdg-screensaver is for use inside a desktop session only. It is not recommended
++to use xdg-screensaver as root.
++
++Commands
++
++suspend WindowID
++
++    Suspends the screensaver and monitor power management. WindowID must be the
++    X Window ID of an existing window of the calling application. The window
++    must remain in existence for the duration of the suspension.
++
++    WindowID can be represented as either a decimal number or as a hexadecimal
++    number consisting of the prefix 0x followed by one or more hexadecimal
++    digits.
++
++    The screensaver can be suspended in relation to multiple windows at the
++    same time. In that case screensaver operation is only restored once the
++    screensaver has been resumed in relation to each of the windows
++
++resume WindowID
++    Resume the screensaver and monitor power management after being suspended.
++    WindowID must be the same X Window ID that was passed to a previous call of
++    xdg-screensaver suspend
++activate
++    Turns the screensaver on immediately. This may result in the screen getting
++    locked, depending on existing system policies.
++lock
++    Lock the screen immediately.
++reset
++    Turns the screensaver off immediately. If the screen was locked the user
++    may be asked to authenticate first.
++status
++    Prints enabled to stdout if the screensaver is enabled to turn on after a
++    period of inactivity and prints disabled if the screensaver is not enabled.
++
++Options
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++Examples
++
++xdg-screensaver suspend 0x1c00007
++
++Causes the screensaver to be disabled till xdg-screensaver resume 0x1c00007 is
++called. 0x1c00007 must be the X Window ID of an existing window.
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-settings.txt xdg-utils-1.1.1-txt-files/scripts/xdg-settings.txt
+--- xdg-utils-1.1.1/scripts/xdg-settings.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-settings.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,84 @@
++Name
++
++xdg-settings — get various settings from the desktop environment
++
++Synopsis
++
++xdg-settings { get | check | set } {property} [subproperty] [value]
++
++xdg-settings { --help | --list | --manual | --version }
++
++Description
++
++xdg-settings gets various settings from the desktop environment. For instance,
++desktop environments often provide proxy configuration and default web browser
++settings. Using xdg-settings these parameters can be extracted for use by
++applications that do not use the desktop environment's libraries (which would
++use the settings natively).
++
++xdg-settings is for use inside a desktop session only. It is not recommended to
++use xdg-settings as root.
++
++Options
++
++--help
++    Show command synopsis.
++--list
++    List all properties xdg-settings knows about.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Properties
++
++When using xdg-settings to get, check or set a destkop setting, properties and
++possibly sub-properties are used to specify the setting to be changed.
++
++Some properties (such as default-web-browser) fully describe the setting to be
++changed. Other properties (such as default-url-scheme-handler) require more
++information (in this case the actual scheme to set the default handler for)
++which must be provided in a sub-property.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++See Also
++
++xdg-mime(1), xdg-open(1), MIME applications associations specification
++
++Examples
++
++Get the desktop file name of the current default web browser
++
++        xdg-settings get default-web-browser
++
++
++Check whether the default web browser is firefox.desktop, which can be false
++even if "get default-web-browser" says that is the current value (if only some
++of the underlying settings actually reflect that value)
++
++        xdg-settings check default-web-browser firefox.desktop
++
++
++Set the default web browser to google-chrome.desktop
++
++        xdg-settings set default-web-browser google-chrome.desktop
++
++
++Set the default mailto URL scheme handler to be evolution.desktop
++
++        xdg-settings set default-url-scheme-handler mailto evolution.desktop
++
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-su.txt xdg-utils-1.1.1-txt-files/scripts/xdg-su.txt
+--- xdg-utils-1.1.1/scripts/xdg-su.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-su.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,54 @@
++Name
++
++xdg-su — run a GUI program as root after prompting for the root password
++
++Synopsis
++
++xdg-su [-u user] -c command
++
++xdg-su { --help | --manual | --version }
++
++Description
++
++xdg-su provides a graphical dialog that prompts the user for a password to run
++command as user or as root if no user was specified.
++
++xdg-su is for use inside a desktop session only.
++
++xdg-su discards any stdout and stderr output from command.
++
++Options
++
++-u user
++    run command as user. The default is to run as root.
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++2
++    One of the files passed on the command line did not exist.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++See Also
++
++su(1)
++
++Examples
++
++xdg-su -u root -c "/opt/shinythings/bin/install-GUI --install fast"
++
++Runs the /opt/shinythings/bin/install-GUI command with root permissions.
++
+diff -Naur xdg-utils-1.1.1/scripts/xdg-terminal.txt xdg-utils-1.1.1-txt-files/scripts/xdg-terminal.txt
+--- xdg-utils-1.1.1/scripts/xdg-terminal.txt	1970-01-01 02:00:00.000000000 +0200
++++ xdg-utils-1.1.1-txt-files/scripts/xdg-terminal.txt	2016-05-19 14:34:20.864688878 +0300
+@@ -0,0 +1,50 @@
++Name
++
++xdg-terminal — opens the user's preferred terminal emulator application
++
++Synopsis
++
++xdg-terminal [command]
++
++xdg-terminal { --help | --manual | --version }
++
++Description
++
++xdg-terminal opens the user's preferred terminal emulator application. If a
++command is provided the command will be executed by the shell within the newly
++opened terminal window.
++
++xdg-terminal is for use inside a desktop session only. It is not recommended to
++use xdg-terminal as root.
++
++Options
++
++--help
++    Show command synopsis.
++--manual
++    Show this manual page.
++--version
++    Show the xdg-utils version information.
++
++Exit Codes
++
++An exit code of 0 indicates success while a non-zero exit code indicates
++failure. The following failure codes can be returned:
++
++1
++    Error in command line syntax.
++3
++    A required tool could not be found.
++4
++    The action failed.
++
++Examples
++
++xdg-terminal
++
++Opens the user's default terminal emulator, just starting an interactive shell.
++
++xdg-terminal top
++
++Opens the user's default terminal emulator and lets it run the top executable.
++
