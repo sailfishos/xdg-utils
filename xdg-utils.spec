@@ -16,9 +16,11 @@ License:    MIT
 BuildArch:  noarch
 URL:        http://portland.freedesktop.org/
 Source0:    https://portland.freedesktop.org/download/%{name}-1.1.1.tar.gz
-Source100:  xdg-utils.yaml
-Patch0:     lca_support.patch
-Patch1:     wayland_display_from_xdg.patch
+Patch0:     pre-generate-txt-files.patch
+Patch1:     pre-generate-man-pages.patch
+Patch2:     disable-doc-generation.patch
+Patch3:     lca_support.patch
+Patch4:     wayland_display_from_xdg.patch
 Requires:   coreutils
 Requires:   desktop-file-utils
 Requires:   which
@@ -44,11 +46,16 @@ The following utilities are included:
 
 %prep
 %setup -q -n %{name}-%{version}
-
-# lca_support.patch
+# pre-generate-txt-files.patch
 %patch0 -p1
-# wayland_display_from_xdg.patch
+# pre-generate-man-pages.patch
 %patch1 -p1
+# disable-doc-generation.patch
+%patch2 -p1
+# lca_support.patch
+%patch3 -p1
+# wayland_display_from_xdg.patch
+%patch4 -p1
 # >> setup
 # << setup
 

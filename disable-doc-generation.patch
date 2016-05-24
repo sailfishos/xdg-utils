@@ -1,0 +1,29 @@
+--- xdg-utils-1.1.1/scripts/Makefile.in	2015-10-05 21:59:19.000000000 +0300
++++ xdg-utils-1.1.1-Makefile/scripts/Makefile.in	2016-05-23 13:48:35.083258236 +0300
+@@ -30,7 +30,7 @@
+ WEBPAGES=	$(SCRIPTS:%=html/%.html)
+ XMLFILES=	$(SCRIPTS:%=desc/%.xml)
+ 
+-all:		html man scripts
++all:		scripts
+ 
+ html:		html/index.html $(WEBPAGES)
+ 
+@@ -38,7 +38,7 @@
+ 
+ man:		$(MANPAGES)
+ 
+-release:	scripts html man
++release:	scripts
+ 	rm -f *~
+ 	#rm -rf desc/ xsl/
+ 	rm -f xdg-file-dialog xdg-su xdg-copy xdg-terminal
+@@ -81,7 +81,7 @@
+ 	done
+ 	-$(RMDIR) $(DESTDIR)$(bindir)
+ 
+-%: %.in %.txt
++%: %.in
+ 	awk -f generate-help-script.awk $@.in | sed -e 's/@NAME@/'$@'/g' > $@
+ 	chmod a+x $@
+ 

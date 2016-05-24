@@ -1,3 +1,6 @@
+* Thu May 19 2016 Kastlunger Tone <users.giulietta@gmail.com> - 1.1.1
+- Added patch for generation of txt files; pulled in clean Vanilla upstream build
+
 * Fri Apr 22 2016 Pekka Vuorela <pekka.vuorela@jolla.com> - 1.1.1
 - Contributes to JB#34969 : Update to 1.1.1
 
