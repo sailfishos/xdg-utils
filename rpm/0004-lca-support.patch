@@ -1,0 +1,44 @@
+From 293f0d28c0f8ca1b4d5f72d900a95227eea12bb7 Mon Sep 17 00:00:00 2001
+From: Raine Makelainen <raine.makelainen@jolla.com>
+Date: Tue, 23 Jan 2018 20:10:25 +0200
+Subject: [PATCH 4/4] lca support
+
+---
+ scripts/xdg-open.in | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
+index 9817c5f..71581d3 100644
+--- a/scripts/xdg-open.in
++++ b/scripts/xdg-open.in
+@@ -383,6 +383,13 @@ open_generic()
+ 
+         check_input_file "$file"
+ 
++        if which lca-tool 2>/dev/null 1>&2; then
++            lca-tool --file --triggerdefault "$file"
++            if [ $? -eq 0 ]; then
++                exit_success
++            fi
++        fi
++
+         if has_display; then
+             filetype=`xdg-mime query filetype "$file" | sed "s/;.*//"`
+             open_generic_xdg_mime "$file" "$filetype"
+@@ -403,6 +410,13 @@ open_generic()
+         fi
+     fi
+ 
++    if which lca-tool 2>/dev/null 1>&2; then
++        lca-tool --scheme --triggerdefault "$1"
++        if [ $? -eq 0 ]; then
++            exit_success
++        fi
++    fi
++
+     if has_display; then
+         open_generic_xdg_x_scheme_handler "$1"
+     fi
+-- 
+2.7.4
+

@@ -1,0 +1,43 @@
+From 22c5c8611828369705648b13079263bde3781cf2 Mon Sep 17 00:00:00 2001
+From: Raine Makelainen <raine.makelainen@jolla.com>
+Date: Tue, 23 Jan 2018 20:02:22 +0200
+Subject: [PATCH 3/4] Disable doc generation
+
+---
+ scripts/Makefile.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/Makefile.in b/scripts/Makefile.in
+index d167393..e55748c 100644
+--- a/scripts/Makefile.in
++++ b/scripts/Makefile.in
+@@ -30,7 +30,7 @@ MANPAGES=	$(SCRIPTS:%=man/%.1)
+ WEBPAGES=	$(SCRIPTS:%=html/%.html)
+ XMLFILES=	$(SCRIPTS:%=desc/%.xml)
+ 
+-all:		html man scripts
++all:		scripts
+ 
+ html:		html/index.html $(WEBPAGES)
+ 
+@@ -38,7 +38,7 @@ scripts:	README $(SCRIPTS)
+ 
+ man:		$(MANPAGES)
+ 
+-release:	scripts html man
++release:	scripts
+ 	rm -f *~
+ 	#rm -rf desc/ xsl/
+ 	rm -f xdg-file-dialog xdg-su xdg-copy xdg-terminal
+@@ -81,7 +81,7 @@ uninstall:
+ 	done
+ 	-$(RMDIR) $(DESTDIR)$(bindir)
+ 
+-%: %.in %.txt
++%: %.in
+ 	awk -f generate-help-script.awk $@.in | sed -e 's/@NAME@/'$@'/g' > $@
+ 	chmod a+x $@
+ 
+-- 
+2.7.4
+

@@ -1,6 +1,32 @@
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-desktop-icon.1 xdg-utils-1.1.1-man/scripts/man/xdg-desktop-icon.1
---- xdg-utils-1.1.1/scripts/man/xdg-desktop-icon.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-desktop-icon.1	2016-05-23 15:15:07.110390682 +0300
+From 2543e11249bbbbe72dbf42d7d6acaf3da95791e8 Mon Sep 17 00:00:00 2001
+From: Raine Makelainen <raine.makelainen@jolla.com>
+Date: Tue, 23 Jan 2018 20:01:47 +0200
+Subject: [PATCH 2/4] Pre generate man pages
+
+---
+ scripts/man/xdg-desktop-icon.1  | 237 +++++++++++++++++++++
+ scripts/man/xdg-desktop-menu.1  | 454 ++++++++++++++++++++++++++++++++++++++++
+ scripts/man/xdg-email.1         | 205 ++++++++++++++++++
+ scripts/man/xdg-icon-resource.1 | 252 ++++++++++++++++++++++
+ scripts/man/xdg-mime.1          | 292 ++++++++++++++++++++++++++
+ scripts/man/xdg-open.1          | 131 ++++++++++++
+ scripts/man/xdg-screensaver.1   | 152 ++++++++++++++
+ scripts/man/xdg-settings.1      | 165 +++++++++++++++
+ 8 files changed, 1888 insertions(+)
+ create mode 100644 scripts/man/xdg-desktop-icon.1
+ create mode 100644 scripts/man/xdg-desktop-menu.1
+ create mode 100644 scripts/man/xdg-email.1
+ create mode 100644 scripts/man/xdg-icon-resource.1
+ create mode 100644 scripts/man/xdg-mime.1
+ create mode 100644 scripts/man/xdg-open.1
+ create mode 100644 scripts/man/xdg-screensaver.1
+ create mode 100644 scripts/man/xdg-settings.1
+
+diff --git a/scripts/man/xdg-desktop-icon.1 b/scripts/man/xdg-desktop-icon.1
+new file mode 100644
+index 0000000..6de24ca
+--- /dev/null
++++ b/scripts/man/xdg-desktop-icon.1
 @@ -0,0 +1,237 @@
 +'\" t
 +.\"     Title: xdg-desktop-icon
@@ -239,9 +265,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-desktop-icon.1 xdg-utils-1.1.1-man/sc
 +.br
 +Copyright \(co 2006
 +.br
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-desktop-menu.1 xdg-utils-1.1.1-man/scripts/man/xdg-desktop-menu.1
---- xdg-utils-1.1.1/scripts/man/xdg-desktop-menu.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-desktop-menu.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-desktop-menu.1 b/scripts/man/xdg-desktop-menu.1
+new file mode 100644
+index 0000000..60dd19b
+--- /dev/null
++++ b/scripts/man/xdg-desktop-menu.1
 @@ -0,0 +1,454 @@
 +'\" t
 +.\"     Title: xdg-desktop-menu
@@ -697,9 +725,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-desktop-menu.1 xdg-utils-1.1.1-man/sc
 +.RS 4
 +\%http://www.freedesktop.org/wiki/Specifications/menu-spec/
 +.RE
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-email.1 xdg-utils-1.1.1-man/scripts/man/xdg-email.1
---- xdg-utils-1.1.1/scripts/man/xdg-email.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-email.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-email.1 b/scripts/man/xdg-email.1
+new file mode 100644
+index 0000000..be8a748
+--- /dev/null
++++ b/scripts/man/xdg-email.1
 @@ -0,0 +1,205 @@
 +'\" t
 +.\"     Title: xdg-email
@@ -906,9 +936,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-email.1 xdg-utils-1.1.1-man/scripts/m
 +.RS 4
 +\%https://tools.ietf.org/html/rfc6068
 +.RE
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-icon-resource.1 xdg-utils-1.1.1-man/scripts/man/xdg-icon-resource.1
---- xdg-utils-1.1.1/scripts/man/xdg-icon-resource.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-icon-resource.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-icon-resource.1 b/scripts/man/xdg-icon-resource.1
+new file mode 100644
+index 0000000..bd79289
+--- /dev/null
++++ b/scripts/man/xdg-icon-resource.1
 @@ -0,0 +1,252 @@
 +'\" t
 +.\"     Title: xdg-icon-resource
@@ -1162,9 +1194,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-icon-resource.1 xdg-utils-1.1.1-man/s
 +.RS 4
 +\%http://www.freedesktop.org/wiki/Specifications/icon-theme-spec/
 +.RE
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-mime.1 xdg-utils-1.1.1-man/scripts/man/xdg-mime.1
---- xdg-utils-1.1.1/scripts/man/xdg-mime.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-mime.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-mime.1 b/scripts/man/xdg-mime.1
+new file mode 100644
+index 0000000..26d4dcc
+--- /dev/null
++++ b/scripts/man/xdg-mime.1
 @@ -0,0 +1,292 @@
 +'\" t
 +.\"     Title: xdg-mime
@@ -1458,9 +1492,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-mime.1 xdg-utils-1.1.1-man/scripts/ma
 +.RS 4
 +\%http://www.freedesktop.org/wiki/Specifications/mime-apps-spec/
 +.RE
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-open.1 xdg-utils-1.1.1-man/scripts/man/xdg-open.1
---- xdg-utils-1.1.1/scripts/man/xdg-open.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-open.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-open.1 b/scripts/man/xdg-open.1
+new file mode 100644
+index 0000000..1978bb2
+--- /dev/null
++++ b/scripts/man/xdg-open.1
 @@ -0,0 +1,131 @@
 +'\" t
 +.\"     Title: xdg-open
@@ -1593,9 +1629,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-open.1 xdg-utils-1.1.1-man/scripts/ma
 +.RS 4
 +\%http://www.freedesktop.org/wiki/Specifications/mime-apps-spec/
 +.RE
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-screensaver.1 xdg-utils-1.1.1-man/scripts/man/xdg-screensaver.1
---- xdg-utils-1.1.1/scripts/man/xdg-screensaver.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-screensaver.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-screensaver.1 b/scripts/man/xdg-screensaver.1
+new file mode 100644
+index 0000000..3b80c0b
+--- /dev/null
++++ b/scripts/man/xdg-screensaver.1
 @@ -0,0 +1,152 @@
 +'\" t
 +.\"     Title: xdg-screensaver
@@ -1749,9 +1787,11 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-screensaver.1 xdg-utils-1.1.1-man/scr
 +.br
 +Copyright \(co 2006
 +.br
-diff -Naur xdg-utils-1.1.1/scripts/man/xdg-settings.1 xdg-utils-1.1.1-man/scripts/man/xdg-settings.1
---- xdg-utils-1.1.1/scripts/man/xdg-settings.1	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-man/scripts/man/xdg-settings.1	2016-05-23 15:15:07.110390682 +0300
+diff --git a/scripts/man/xdg-settings.1 b/scripts/man/xdg-settings.1
+new file mode 100644
+index 0000000..64b6a31
+--- /dev/null
++++ b/scripts/man/xdg-settings.1
 @@ -0,0 +1,165 @@
 +'\" t
 +.\"     Title: xdg-settings
@@ -1918,3 +1958,6 @@ diff -Naur xdg-utils-1.1.1/scripts/man/xdg-settings.1 xdg-utils-1.1.1-man/script
 +.RS 4
 +\%http://www.freedesktop.org/wiki/Specifications/mime-apps-spec/
 +.RE
+-- 
+2.7.4
+

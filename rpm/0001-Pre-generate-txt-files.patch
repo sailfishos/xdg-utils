@@ -1,6 +1,40 @@
-diff -Naur xdg-utils-1.1.1/scripts/xdg-copy.txt xdg-utils-1.1.1-txt-files/scripts/xdg-copy.txt
---- xdg-utils-1.1.1/scripts/xdg-copy.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-copy.txt	2016-05-19 14:34:20.860688780 +0300
+From a948482ec3cd820530e31a610bc3cd74d3eda778 Mon Sep 17 00:00:00 2001
+From: Raine Makelainen <raine.makelainen@jolla.com>
+Date: Tue, 23 Jan 2018 19:58:04 +0200
+Subject: [PATCH 1/4] Pre generate txt-files
+
+---
+ scripts/xdg-copy.txt          |  49 ++++++
+ scripts/xdg-desktop-icon.txt  | 150 +++++++++++++++++++
+ scripts/xdg-desktop-menu.txt  | 341 ++++++++++++++++++++++++++++++++++++++++++
+ scripts/xdg-email.txt         | 101 +++++++++++++
+ scripts/xdg-file-dialog.txt   |  78 ++++++++++
+ scripts/xdg-icon-resource.txt | 141 +++++++++++++++++
+ scripts/xdg-mime.txt          | 170 +++++++++++++++++++++
+ scripts/xdg-open.txt          |  58 +++++++
+ scripts/xdg-screensaver.txt   |  81 ++++++++++
+ scripts/xdg-settings.txt      |  84 +++++++++++
+ scripts/xdg-su.txt            |  54 +++++++
+ scripts/xdg-terminal.txt      |  50 +++++++
+ 12 files changed, 1357 insertions(+)
+ create mode 100644 scripts/xdg-copy.txt
+ create mode 100644 scripts/xdg-desktop-icon.txt
+ create mode 100644 scripts/xdg-desktop-menu.txt
+ create mode 100644 scripts/xdg-email.txt
+ create mode 100644 scripts/xdg-file-dialog.txt
+ create mode 100644 scripts/xdg-icon-resource.txt
+ create mode 100644 scripts/xdg-mime.txt
+ create mode 100644 scripts/xdg-open.txt
+ create mode 100644 scripts/xdg-screensaver.txt
+ create mode 100644 scripts/xdg-settings.txt
+ create mode 100644 scripts/xdg-su.txt
+ create mode 100644 scripts/xdg-terminal.txt
+
+diff --git a/scripts/xdg-copy.txt b/scripts/xdg-copy.txt
+new file mode 100644
+index 0000000..6bf08b0
+--- /dev/null
++++ b/scripts/xdg-copy.txt
 @@ -0,0 +1,49 @@
 +Name
 +
@@ -51,9 +85,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-copy.txt xdg-utils-1.1.1-txt-files/script
 +
 +xdg-copy "/tmp/foobar.png" "/home/user/foobar-copy.png"
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-icon.txt xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-icon.txt
---- xdg-utils-1.1.1/scripts/xdg-desktop-icon.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-icon.txt	2016-05-19 14:34:20.860688780 +0300
+diff --git a/scripts/xdg-desktop-icon.txt b/scripts/xdg-desktop-icon.txt
+new file mode 100644
+index 0000000..f0236f4
+--- /dev/null
++++ b/scripts/xdg-desktop-icon.txt
 @@ -0,0 +1,150 @@
 +Name
 +
@@ -205,9 +241,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-icon.txt xdg-utils-1.1.1-txt-file
 +
 +xdg-desktop-icon install ./shinythings-README
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-menu.txt xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-menu.txt
---- xdg-utils-1.1.1/scripts/xdg-desktop-menu.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-desktop-menu.txt	2016-05-19 14:34:20.860688780 +0300
+diff --git a/scripts/xdg-desktop-menu.txt b/scripts/xdg-desktop-menu.txt
+new file mode 100644
+index 0000000..321eaab
+--- /dev/null
++++ b/scripts/xdg-desktop-menu.txt
 @@ -0,0 +1,341 @@
 +Name
 +
@@ -550,9 +588,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-desktop-menu.txt xdg-utils-1.1.1-txt-file
 +xdg-icon-resource install --size 64 ./wmicon-menu-64.png shinythings-webmirror-menu
 +xdg-icon-resource install --size 64 ./wmicon-admin-64.png shinythings-webmirror-admin
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-email.txt xdg-utils-1.1.1-txt-files/scripts/xdg-email.txt
---- xdg-utils-1.1.1/scripts/xdg-email.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-email.txt	2016-05-19 14:34:20.860688780 +0300
+diff --git a/scripts/xdg-email.txt b/scripts/xdg-email.txt
+new file mode 100644
+index 0000000..e95df1f
+--- /dev/null
++++ b/scripts/xdg-email.txt
 @@ -0,0 +1,101 @@
 +Name
 +
@@ -655,9 +695,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-email.txt xdg-utils-1.1.1-txt-files/scrip
 +xdg-email --subject 'Your password is about to expire' \
 +          'jwhite@example.com' 'bastian@example.com' 'whipple@example.com'
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-file-dialog.txt xdg-utils-1.1.1-txt-files/scripts/xdg-file-dialog.txt
---- xdg-utils-1.1.1/scripts/xdg-file-dialog.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-file-dialog.txt	2016-05-19 14:34:20.860688780 +0300
+diff --git a/scripts/xdg-file-dialog.txt b/scripts/xdg-file-dialog.txt
+new file mode 100644
+index 0000000..bfc2e96
+--- /dev/null
++++ b/scripts/xdg-file-dialog.txt
 @@ -0,0 +1,78 @@
 +Name
 +
@@ -737,9 +779,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-file-dialog.txt xdg-utils-1.1.1-txt-files
 +Asks for a directory name starting in directory /tmp using the text "Select a
 +target folder" as the dialog's title/caption.
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-icon-resource.txt xdg-utils-1.1.1-txt-files/scripts/xdg-icon-resource.txt
---- xdg-utils-1.1.1/scripts/xdg-icon-resource.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-icon-resource.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-icon-resource.txt b/scripts/xdg-icon-resource.txt
+new file mode 100644
+index 0000000..e4a7e68
+--- /dev/null
++++ b/scripts/xdg-icon-resource.txt
 @@ -0,0 +1,141 @@
 +Name
 +
@@ -882,9 +926,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-icon-resource.txt xdg-utils-1.1.1-txt-fil
 +This will install two icons with the name application-x-foobar but with
 +different sizes.
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-mime.txt xdg-utils-1.1.1-txt-files/scripts/xdg-mime.txt
---- xdg-utils-1.1.1/scripts/xdg-mime.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-mime.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-mime.txt b/scripts/xdg-mime.txt
+new file mode 100644
+index 0000000..3d75d36
+--- /dev/null
++++ b/scripts/xdg-mime.txt
 @@ -0,0 +1,170 @@
 +Name
 +
@@ -1056,9 +1102,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-mime.txt xdg-utils-1.1.1-txt-files/script
 +
 +xdg-icon-resource install --context mimetypes --size 64 shiny-file-icon.png text-x-shiny
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-open.txt xdg-utils-1.1.1-txt-files/scripts/xdg-open.txt
---- xdg-utils-1.1.1/scripts/xdg-open.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-open.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-open.txt b/scripts/xdg-open.txt
+new file mode 100644
+index 0000000..60e6733
+--- /dev/null
++++ b/scripts/xdg-open.txt
 @@ -0,0 +1,58 @@
 +Name
 +
@@ -1118,9 +1166,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-open.txt xdg-utils-1.1.1-txt-files/script
 +Opens the PNG image file /tmp/foobar.png in the user's default image viewing
 +application.
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-screensaver.txt xdg-utils-1.1.1-txt-files/scripts/xdg-screensaver.txt
---- xdg-utils-1.1.1/scripts/xdg-screensaver.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-screensaver.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-screensaver.txt b/scripts/xdg-screensaver.txt
+new file mode 100644
+index 0000000..5428044
+--- /dev/null
++++ b/scripts/xdg-screensaver.txt
 @@ -0,0 +1,81 @@
 +Name
 +
@@ -1203,9 +1253,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-screensaver.txt xdg-utils-1.1.1-txt-files
 +Causes the screensaver to be disabled till xdg-screensaver resume 0x1c00007 is
 +called. 0x1c00007 must be the X Window ID of an existing window.
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-settings.txt xdg-utils-1.1.1-txt-files/scripts/xdg-settings.txt
---- xdg-utils-1.1.1/scripts/xdg-settings.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-settings.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-settings.txt b/scripts/xdg-settings.txt
+new file mode 100644
+index 0000000..55d2a05
+--- /dev/null
++++ b/scripts/xdg-settings.txt
 @@ -0,0 +1,84 @@
 +Name
 +
@@ -1291,9 +1343,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-settings.txt xdg-utils-1.1.1-txt-files/sc
 +        xdg-settings set default-url-scheme-handler mailto evolution.desktop
 +
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-su.txt xdg-utils-1.1.1-txt-files/scripts/xdg-su.txt
---- xdg-utils-1.1.1/scripts/xdg-su.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-su.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-su.txt b/scripts/xdg-su.txt
+new file mode 100644
+index 0000000..b0359e4
+--- /dev/null
++++ b/scripts/xdg-su.txt
 @@ -0,0 +1,54 @@
 +Name
 +
@@ -1349,9 +1403,11 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-su.txt xdg-utils-1.1.1-txt-files/scripts/
 +
 +Runs the /opt/shinythings/bin/install-GUI command with root permissions.
 +
-diff -Naur xdg-utils-1.1.1/scripts/xdg-terminal.txt xdg-utils-1.1.1-txt-files/scripts/xdg-terminal.txt
---- xdg-utils-1.1.1/scripts/xdg-terminal.txt	1970-01-01 02:00:00.000000000 +0200
-+++ xdg-utils-1.1.1-txt-files/scripts/xdg-terminal.txt	2016-05-19 14:34:20.864688878 +0300
+diff --git a/scripts/xdg-terminal.txt b/scripts/xdg-terminal.txt
+new file mode 100644
+index 0000000..fc71edf
+--- /dev/null
++++ b/scripts/xdg-terminal.txt
 @@ -0,0 +1,50 @@
 +Name
 +
@@ -1403,3 +1459,6 @@ diff -Naur xdg-utils-1.1.1/scripts/xdg-terminal.txt xdg-utils-1.1.1-txt-files/sc
 +
 +Opens the user's default terminal emulator and lets it run the top executable.
 +
+-- 
+2.7.4
+
