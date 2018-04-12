@@ -14,6 +14,8 @@ Patch3:     0004-lca-support.patch
 Requires:   coreutils
 Requires:   desktop-file-utils
 Requires:   which
+# Needed by for example xdg-mime
+Requires:   awk
 
 %description
 %{name} contains utilities for integrating applications with the
