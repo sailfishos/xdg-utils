@@ -2,7 +2,6 @@ Name:       xdg-utils
 Summary:    Desktop integration utilities from freedesktop.org
 Version:    1.1.2
 Release:    1
-Group:      System/Base
 License:    MIT
 BuildArch:  noarch
 URL:        http://portland.freedesktop.org/
@@ -14,6 +13,8 @@ Patch3:     0004-lca-support.patch
 Requires:   coreutils
 Requires:   desktop-file-utils
 Requires:   which
+# Needed by for example xdg-mime
+Requires:   awk
 
 %description
 %{name} contains utilities for integrating applications with the
@@ -35,7 +36,6 @@ The following utilities are included:
 
 %package doc
 Summary: Documentation of %{name}
-Group: Documentation
 
 %description doc
 %{name} documentation package including man packages.
