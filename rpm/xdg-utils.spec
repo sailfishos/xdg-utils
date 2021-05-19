@@ -2,7 +2,6 @@ Name:       xdg-utils
 Summary:    Desktop integration utilities from freedesktop.org
 Version:    1.1.2
 Release:    1
-Group:      System/Base
 License:    MIT
 BuildArch:  noarch
 URL:        http://portland.freedesktop.org/
@@ -37,7 +36,6 @@ The following utilities are included:
 
 %package doc
 Summary: Documentation of %{name}
-Group: Documentation
 
 %description doc
 %{name} documentation package including man packages.
