@@ -1,7 +1,7 @@
-From 22c5c8611828369705648b13079263bde3781cf2 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Raine Makelainen <raine.makelainen@jolla.com>
 Date: Tue, 23 Jan 2018 20:02:22 +0200
-Subject: [PATCH 3/4] Disable doc generation
+Subject: [PATCH] Disable doc generation
 
 ---
  scripts/Makefile.in | 6 +++---
@@ -39,5 +39,5 @@ index d167393..e55748c 100644
  	chmod a+x $@
  
 -- 
-2.7.4
+2.31.1
 
