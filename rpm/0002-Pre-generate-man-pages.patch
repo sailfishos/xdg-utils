@@ -1,17 +1,17 @@
-From 2543e11249bbbbe72dbf42d7d6acaf3da95791e8 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Raine Makelainen <raine.makelainen@jolla.com>
 Date: Tue, 23 Jan 2018 20:01:47 +0200
-Subject: [PATCH 2/4] Pre generate man pages
+Subject: [PATCH] Pre generate man pages
 
 ---
- scripts/man/xdg-desktop-icon.1  | 237 +++++++++++++++++++++
- scripts/man/xdg-desktop-menu.1  | 454 ++++++++++++++++++++++++++++++++++++++++
- scripts/man/xdg-email.1         | 205 ++++++++++++++++++
- scripts/man/xdg-icon-resource.1 | 252 ++++++++++++++++++++++
- scripts/man/xdg-mime.1          | 292 ++++++++++++++++++++++++++
- scripts/man/xdg-open.1          | 131 ++++++++++++
- scripts/man/xdg-screensaver.1   | 152 ++++++++++++++
- scripts/man/xdg-settings.1      | 165 +++++++++++++++
+ scripts/man/xdg-desktop-icon.1  | 237 +++++++++++++++++
+ scripts/man/xdg-desktop-menu.1  | 454 ++++++++++++++++++++++++++++++++
+ scripts/man/xdg-email.1         | 205 ++++++++++++++
+ scripts/man/xdg-icon-resource.1 | 252 ++++++++++++++++++
+ scripts/man/xdg-mime.1          | 292 ++++++++++++++++++++
+ scripts/man/xdg-open.1          | 131 +++++++++
+ scripts/man/xdg-screensaver.1   | 152 +++++++++++
+ scripts/man/xdg-settings.1      | 165 ++++++++++++
  8 files changed, 1888 insertions(+)
  create mode 100644 scripts/man/xdg-desktop-icon.1
  create mode 100644 scripts/man/xdg-desktop-menu.1
@@ -24,20 +24,20 @@ Subject: [PATCH 2/4] Pre generate man pages
 
 diff --git a/scripts/man/xdg-desktop-icon.1 b/scripts/man/xdg-desktop-icon.1
 new file mode 100644
-index 0000000..6de24ca
+index 0000000..49c0f8f
 --- /dev/null
 +++ b/scripts/man/xdg-desktop-icon.1
 @@ -0,0 +1,237 @@
 +'\" t
 +.\"     Title: xdg-desktop-icon
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-desktop-icon Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-DESKTOP\-ICON" "1" "05/23/2016" "xdg-utils 1.0" "xdg-desktop-icon Manual"
++.TH "XDG\-DESKTOP\-ICON" "1" "11/16/2021" "xdg-utils 1.0" "xdg-desktop-icon Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -267,20 +267,20 @@ index 0000000..6de24ca
 +.br
 diff --git a/scripts/man/xdg-desktop-menu.1 b/scripts/man/xdg-desktop-menu.1
 new file mode 100644
-index 0000000..60dd19b
+index 0000000..538c7f9
 --- /dev/null
 +++ b/scripts/man/xdg-desktop-menu.1
 @@ -0,0 +1,454 @@
 +'\" t
 +.\"     Title: xdg-desktop-menu
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-desktop-menu Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-DESKTOP\-MENU" "1" "05/23/2016" "xdg-utils 1.0" "xdg-desktop-menu Manual"
++.TH "XDG\-DESKTOP\-MENU" "1" "11/16/2021" "xdg-utils 1.0" "xdg-desktop-menu Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -727,20 +727,20 @@ index 0000000..60dd19b
 +.RE
 diff --git a/scripts/man/xdg-email.1 b/scripts/man/xdg-email.1
 new file mode 100644
-index 0000000..be8a748
+index 0000000..c3c12d5
 --- /dev/null
 +++ b/scripts/man/xdg-email.1
 @@ -0,0 +1,205 @@
 +'\" t
 +.\"     Title: xdg-email
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-email Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-EMAIL" "1" "05/23/2016" "xdg-utils 1.0" "xdg-email Manual"
++.TH "XDG\-EMAIL" "1" "11/16/2021" "xdg-utils 1.0" "xdg-email Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -938,20 +938,20 @@ index 0000000..be8a748
 +.RE
 diff --git a/scripts/man/xdg-icon-resource.1 b/scripts/man/xdg-icon-resource.1
 new file mode 100644
-index 0000000..bd79289
+index 0000000..8212852
 --- /dev/null
 +++ b/scripts/man/xdg-icon-resource.1
 @@ -0,0 +1,252 @@
 +'\" t
 +.\"     Title: xdg-icon-resource
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-icon-resource Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-ICON\-RESOURCE" "1" "05/23/2016" "xdg-utils 1.0" "xdg-icon-resource Manual"
++.TH "XDG\-ICON\-RESOURCE" "1" "11/16/2021" "xdg-utils 1.0" "xdg-icon-resource Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -1196,20 +1196,20 @@ index 0000000..bd79289
 +.RE
 diff --git a/scripts/man/xdg-mime.1 b/scripts/man/xdg-mime.1
 new file mode 100644
-index 0000000..26d4dcc
+index 0000000..f35e5f9
 --- /dev/null
 +++ b/scripts/man/xdg-mime.1
 @@ -0,0 +1,292 @@
 +'\" t
 +.\"     Title: xdg-mime
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-mime Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-MIME" "1" "05/23/2016" "xdg-utils 1.0" "xdg-mime Manual"
++.TH "XDG\-MIME" "1" "11/16/2021" "xdg-utils 1.0" "xdg-mime Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -1275,7 +1275,7 @@ index 0000000..26d4dcc
 +\fImimetype\fR\&. An application can be made the default for several file types by specifying multiple mimetypes\&.
 +.sp
 +\fIapplication\fR
-+is the desktop file id of the application and has the form vendor\-name\&.desktop
++is the desktop file id of the application and has the form vendor\-name\&.desktop\&.
 +\fIapplication\fR
 +must already be installed in the desktop menu before it can be made the default handler\&. The application\*(Aqs desktop file must list support for all the MIME types that it wishes to be the default handler for\&.
 +.sp
@@ -1494,20 +1494,20 @@ index 0000000..26d4dcc
 +.RE
 diff --git a/scripts/man/xdg-open.1 b/scripts/man/xdg-open.1
 new file mode 100644
-index 0000000..1978bb2
+index 0000000..bcd7b8b
 --- /dev/null
 +++ b/scripts/man/xdg-open.1
 @@ -0,0 +1,131 @@
 +'\" t
 +.\"     Title: xdg-open
 +.\"    Author: Kevin Krammer
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-open Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-OPEN" "1" "05/23/2016" "xdg-utils 1.0" "xdg-open Manual"
++.TH "XDG\-OPEN" "1" "11/16/2021" "xdg-utils 1.0" "xdg-open Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -1631,20 +1631,20 @@ index 0000000..1978bb2
 +.RE
 diff --git a/scripts/man/xdg-screensaver.1 b/scripts/man/xdg-screensaver.1
 new file mode 100644
-index 0000000..3b80c0b
+index 0000000..3d928ad
 --- /dev/null
 +++ b/scripts/man/xdg-screensaver.1
 @@ -0,0 +1,152 @@
 +'\" t
 +.\"     Title: xdg-screensaver
 +.\"    Author: Bryce Harrington
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-screensaver Manual
 +.\"    Source: xdg-utils 1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-SCREENSAVER" "1" "05/23/2016" "xdg-utils 1.0" "xdg-screensaver Manual"
++.TH "XDG\-SCREENSAVER" "1" "11/16/2021" "xdg-utils 1.0" "xdg-screensaver Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -1789,20 +1789,20 @@ index 0000000..3b80c0b
 +.br
 diff --git a/scripts/man/xdg-settings.1 b/scripts/man/xdg-settings.1
 new file mode 100644
-index 0000000..64b6a31
+index 0000000..9f4e3f6
 --- /dev/null
 +++ b/scripts/man/xdg-settings.1
 @@ -0,0 +1,165 @@
 +'\" t
 +.\"     Title: xdg-settings
 +.\"    Author: Mike Mammarella
-+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-+.\"      Date: 05/23/2016
++.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
++.\"      Date: 11/16/2021
 +.\"    Manual: xdg-settings Manual
 +.\"    Source: xdg-utils 1.1.0
 +.\"  Language: English
 +.\"
-+.TH "XDG\-SETTINGS" "1" "05/23/2016" "xdg-utils 1.1.0" "xdg-settings Manual"
++.TH "XDG\-SETTINGS" "1" "11/16/2021" "xdg-utils 1.1.0" "xdg-settings Manual"
 +.\" -----------------------------------------------------------------
 +.\" * Define some portability stuff
 +.\" -----------------------------------------------------------------
@@ -1857,7 +1857,7 @@ index 0000000..64b6a31
 +.RE
 +.SH "PROPERTIES"
 +.PP
-+When using xdg\-settings to get, check or set a destkop setting, properties and possibly sub\-properties are used to specify the setting to be changed\&.
++When using xdg\-settings to get, check or set a desktop setting, properties and possibly sub\-properties are used to specify the setting to be changed\&.
 +.PP
 +Some properties (such as default\-web\-browser) fully describe the setting to be changed\&. Other properties (such as default\-url\-scheme\-handler) require more information (in this case the actual scheme to set the default handler for) which must be provided in a sub\-property\&.
 +.SH "EXIT CODES"
@@ -1959,5 +1959,5 @@ index 0000000..64b6a31
 +\%http://www.freedesktop.org/wiki/Specifications/mime-apps-spec/
 +.RE
 -- 
-2.7.4
+2.31.1
 

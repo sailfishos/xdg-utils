@@ -1,6 +1,6 @@
 Name:       xdg-utils
 Summary:    Desktop integration utilities from freedesktop.org
-Version:    1.1.2
+Version:    1.1.3
 Release:    1
 License:    MIT
 BuildArch:  noarch
@@ -41,23 +41,18 @@ Summary: Documentation of %{name}
 %{name} documentation package including man packages.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
-%patch0 -p1 -b .pre-generate-txt-files
-%patch1 -p1 -b .pre-generate-man-pages
-%patch2 -p1 -b .disable-doc-generation
-%patch3 -p1 -b .lca_support
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf %{buildroot}
 %make_install
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{_bindir}/xdg-desktop-icon
 %{_bindir}/xdg-desktop-menu
 %{_bindir}/xdg-email
