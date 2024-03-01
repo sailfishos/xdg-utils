@@ -8,10 +8,10 @@ Subject: [PATCH] lca support
  1 file changed, 14 insertions(+)
 
 diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
-index 630e63e..9fa2dce 100644
+index feacc1f..4943163 100755
 --- a/scripts/xdg-open.in
 +++ b/scripts/xdg-open.in
-@@ -406,6 +406,13 @@ open_generic()
+@@ -482,6 +482,13 @@ open_generic()
  
          check_input_file "$file"
  
@@ -23,9 +23,9 @@ index 630e63e..9fa2dce 100644
 +        fi
 +
          if has_display; then
-             filetype=`xdg-mime query filetype "$file" | sed "s/;.*//"`
-             open_generic_xdg_mime "$file" "$filetype"
-@@ -426,6 +433,13 @@ open_generic()
+             filetype="$(xdg-mime query filetype "$file" | sed "s/;.*//")"
+             # passing a path a url is okay too,
+@@ -504,6 +511,13 @@ open_generic()
          fi
      fi
  
@@ -39,6 +39,3 @@ index 630e63e..9fa2dce 100644
      if has_display; then
          open_generic_xdg_x_scheme_handler "$1"
      fi
--- 
-2.31.1
-
