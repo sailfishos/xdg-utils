@@ -8,10 +8,10 @@ Subject: [PATCH] Disable doc generation
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/scripts/Makefile.in b/scripts/Makefile.in
-index d167393..e55748c 100644
+index 7939a4e..b92bf8f 100644
 --- a/scripts/Makefile.in
 +++ b/scripts/Makefile.in
-@@ -30,7 +30,7 @@ MANPAGES=	$(SCRIPTS:%=man/%.1)
+@@ -31,7 +31,7 @@ MANPAGES=	$(SCRIPTS:%=man/%.1)
  WEBPAGES=	$(SCRIPTS:%=html/%.html)
  XMLFILES=	$(SCRIPTS:%=desc/%.xml)
  
@@ -20,7 +20,7 @@ index d167393..e55748c 100644
  
  html:		html/index.html $(WEBPAGES)
  
-@@ -38,7 +38,7 @@ scripts:	README $(SCRIPTS)
+@@ -39,7 +39,7 @@ scripts:	README $(SCRIPTS)
  
  man:		$(MANPAGES)
  
@@ -29,7 +29,7 @@ index d167393..e55748c 100644
  	rm -f *~
  	#rm -rf desc/ xsl/
  	rm -f xdg-file-dialog xdg-su xdg-copy xdg-terminal
-@@ -81,7 +81,7 @@ uninstall:
+@@ -82,7 +82,7 @@ uninstall:
  	done
  	-$(RMDIR) $(DESTDIR)$(bindir)
  
@@ -38,6 +38,3 @@ index d167393..e55748c 100644
  	awk -f generate-help-script.awk $@.in | sed -e 's/@NAME@/'$@'/g' > $@
  	chmod a+x $@
  
--- 
-2.31.1
-

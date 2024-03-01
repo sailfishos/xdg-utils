@@ -1,6 +1,6 @@
 Name:       xdg-utils
 Summary:    Desktop integration utilities from freedesktop.org
-Version:    1.1.3
+Version:    1.2.1
 Release:    1
 License:    MIT
 BuildArch:  noarch
@@ -63,7 +63,7 @@ Summary: Documentation of %{name}
 %{_bindir}/xdg-settings
 
 %files doc
-%doc README TODO
+%doc README.md TODO
 %{_mandir}/man1/xdg-desktop-icon.*
 %{_mandir}/man1/xdg-desktop-menu.*
 %{_mandir}/man1/xdg-email.*
